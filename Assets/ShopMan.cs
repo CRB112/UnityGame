@@ -82,7 +82,7 @@ public class ShopMan : MonoBehaviour
             islot.Init(o);
             temp.GetComponent<Button>().onClick.AddListener(() =>
             {
-                statMan.addItem(o);
+                purchase(o);
             });
         }
     }
@@ -118,6 +118,18 @@ public class ShopMan : MonoBehaviour
                 ss.ALLBALLS[rarity][Random.Range(0, ss.ALLBALLS[rarity].Count - 1)] :
                 ss.ALLPINS[rarity][Random.Range(0, ss.ALLPINS[rarity].Count - 1)];
             items.Add(item);
+        }
+    }
+    private void purchase(DynamicObject d)
+    {
+        if (statMan.cash >= d.getCost())
+        {
+            statMan.cash -= d.getCost();
+            statMan.addItem(d);
+        }
+        else
+        {
+            //Animation
         }
     }
 }

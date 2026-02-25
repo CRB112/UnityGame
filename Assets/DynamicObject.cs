@@ -16,4 +16,12 @@ public class DynamicObject : MonoBehaviour
     {
 
     }
+    public Color getColor()
+    {
+        return color;
+    }
+    public int getCost()
+    {
+        return Cost;
+    }
 }
