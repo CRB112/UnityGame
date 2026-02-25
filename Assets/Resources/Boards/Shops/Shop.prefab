@@ -603,6 +603,7 @@ MonoBehaviour:
   statMan: {fileID: 0}
   fillSpace: {fileID: 7765620053220669135}
   itemSlot: {fileID: 5947222135610887134, guid: 66aedecfe661a7e4186a061e11b875f0, type: 3}
+  emptySlot: {fileID: 5947222135610887134, guid: 1650ba6b275b79b4aa1e92a3cd69473d, type: 3}
   b: {fileID: 6320332720626525380}
   itemCount: 6
   items: []

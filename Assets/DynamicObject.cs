@@ -5,7 +5,7 @@ public class DynamicObject : MonoBehaviour
     public RarityLevel rarity;
     private int Cost;
     private Color color;
-    void Start()
+    public void Init()
     {
         color = Rarity.GetColor(rarity);
         Cost = Rarity.GetCost(rarity);

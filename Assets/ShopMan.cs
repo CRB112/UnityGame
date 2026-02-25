@@ -25,6 +25,22 @@ public class itemSlot : MonoBehaviour
             }
         }
     }
+    //Returns bool for disableBox() semantics
+    public bool purchase()
+    {
+        StatManager statMan = GameObject.FindAnyObjectByType<StatManager>();
+        if (statMan.cash >= obj.getCost())
+        {
+            statMan.cash -= obj.getCost();
+            statMan.addItem(obj);
+            return true;
+        }
+        else
+        {
+            return false;
+            //Animation
+        }
+    }
 }
 public class ShopMan : MonoBehaviour
 {
@@ -34,6 +50,7 @@ public class ShopMan : MonoBehaviour
 
     public GameObject fillSpace;
     public GameObject itemSlot;
+    public GameObject emptySlot;
     public Button b;
 
     int[] weights = {
@@ -53,6 +70,7 @@ public class ShopMan : MonoBehaviour
         ss = FindAnyObjectByType<SystemSerializer>();
         statMan = FindAnyObjectByType<StatManager>();
         controls = FindAnyObjectByType<globalControls>();
+        statMan.pinsDisplayParent.SetActive(false);
         controls.controls.Player.LeftFlipper.Disable();
         controls.controls.Player.RightFlipper.Disable();
         controls.controls.Player.BoomStick.Disable();
@@ -69,6 +87,11 @@ public class ShopMan : MonoBehaviour
     {
 
     }
+
+    void OnDestroy()
+    {
+        statMan.pinsDisplayParent.SetActive(true);
+    }
     public void stockShop()
     {
         rollItems();
@@ -82,7 +105,11 @@ public class ShopMan : MonoBehaviour
             islot.Init(o);
             temp.GetComponent<Button>().onClick.AddListener(() =>
             {
-                purchase(o);
+                bool b = islot.purchase();
+                if (b)
+                {
+                    disableBox(temp);
+                }
             });
         }
     }
@@ -120,16 +147,12 @@ public class ShopMan : MonoBehaviour
             items.Add(item);
         }
     }
-    private void purchase(DynamicObject d)
+    private void disableBox(GameObject g)
     {
-        if (statMan.cash >= d.getCost())
-        {
-            statMan.cash -= d.getCost();
-            statMan.addItem(d);
-        }
-        else
-        {
-            //Animation
-        }
+        int index = g.transform.GetSiblingIndex();
+        Destroy(g);
+
+        GameObject temp = Instantiate(emptySlot, fillSpace.transform);
+        temp.transform.SetSiblingIndex(index);
     }
 }

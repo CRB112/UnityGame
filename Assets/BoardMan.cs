@@ -18,23 +18,25 @@ public class BoardMan : MonoBehaviour
         statMan = FindFirstObjectByType<StatManager>();
         boomstick = FindFirstObjectByType<FiringMechanism>();
         controls = FindFirstObjectByType<globalControls>();
+        statMan.pinsDisplay.SetActive(true);
         controls.controls.Player.LeftFlipper.Enable();
         controls.controls.Player.RightFlipper.Enable();
         controls.controls.Player.BoomStick.Enable();
         controls.controls.Player.SwapToBuild.Enable();
-        activeBalls = new List<GameObject>();   
-        
+        activeBalls = new List<GameObject>();
 
-        controls.controls.Player.SwapToBuild.performed += ctx =>
-        {
-            if (activeBalls.Count == 0)
-                swapMode();
-        };
+
+        controls.controls.Player.SwapToBuild.performed += OnSwapPerformed;
     }
     void Update()
     {
 
     }
+    void OnDestroy()
+        {
+            if (controls != null)
+                controls.controls.Player.SwapToBuild.performed -= OnSwapPerformed;
+        }
     public void getBalls()
     {
         foreach (Ball b in FindObjectsByType<Ball>(FindObjectsSortMode.None))
@@ -55,15 +57,15 @@ public class BoardMan : MonoBehaviour
     }
     public void startRound()
     {
-    boomstick.loadAllBalls(statMan.balls);
-    boomstick.loadSingleBall();
+        boomstick.loadAllBalls(statMan.balls);
+        boomstick.loadSingleBall();
     }
     private void endRound()
     {
         gameStateMan.nextRound();
     }
 
-    public void swapMode()
+    public void swapMode(Pin p = null)
     {
         if (builder == null)
             Debug.Log("ASD");
@@ -78,6 +80,9 @@ public class BoardMan : MonoBehaviour
 
             controls.controls.Player.BuildLClick.Enable();
             controls.controls.Player.BuildRClick.Enable();
+
+            GridSystem gs = builder.GetComponent<GridSystem>();
+            gs.selectedBuild = p.gameObject;
         }
         else
         {
@@ -89,5 +94,11 @@ public class BoardMan : MonoBehaviour
             controls.controls.Player.BuildLClick.Disable();
             controls.controls.Player.BuildRClick.Disable();
         }
+    }
+    
+    private void OnSwapPerformed(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        if (activeBalls.Count == 0)
+            swapMode();
     }
 }

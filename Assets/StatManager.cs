@@ -15,6 +15,7 @@ public class StatManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI cashText;
 
+    public GameObject pinsDisplayParent; //Used for disabling
     public GameObject pinsDisplay;
     public GameObject pinBox;
 

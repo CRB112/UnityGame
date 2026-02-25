@@ -88,6 +88,7 @@ public class SystemSerializer : MonoBehaviour
             for (int j = 0; j < balls.Length; ++j)
             {
                 DynamicObject item = balls[j].GetComponent<DynamicObject>();
+                item.Init();
                 ALLBALLS[i].Add(item);
             }
         }
@@ -105,6 +106,7 @@ public class SystemSerializer : MonoBehaviour
             for (int j = 0; j < pins.Length; ++j)
             {
                 DynamicObject item = pins[j].GetComponent<DynamicObject>();
+                item.Init();
                 ALLPINS[i].Add(item);
             }
         }

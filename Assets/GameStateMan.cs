@@ -37,7 +37,6 @@ public class GameStateMan : MonoBehaviour
 
     private void OnDestroy()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     public void swapState(string state, string scene = "")
     {
