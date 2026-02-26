@@ -55,6 +55,14 @@ public class StatManager : MonoBehaviour
         {
             GameObject temp = Instantiate(pinBox, pinsDisplay.transform);
             temp.GetComponent<Image>().sprite = p.gameObject.GetComponent<SpriteRenderer>().sprite;
+            temp.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                BoardMan b = FindAnyObjectByType<BoardMan>();
+                if (!b.builder.activeSelf)
+                    b.swapMode(p);
+                else
+                    FindAnyObjectByType<GridSystem>().selectBuild(p);
+            });
         }
     }
 }

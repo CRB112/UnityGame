@@ -67,11 +67,8 @@ public class BoardMan : MonoBehaviour
 
     public void swapMode(Pin p = null)
     {
-        if (builder == null)
-            Debug.Log("ASD");
-
         building = !building;
-        if (building)
+        if (building && activeBalls.Count == 0)
         {
             builder.SetActive(true);
             controls.controls.Player.LeftFlipper.Disable();
@@ -80,20 +77,22 @@ public class BoardMan : MonoBehaviour
 
             controls.controls.Player.BuildLClick.Enable();
             controls.controls.Player.BuildRClick.Enable();
-
-            GridSystem gs = builder.GetComponent<GridSystem>();
-            gs.selectedBuild = p.gameObject;
+            if (p != null)
+            {
+                GridSystem gs = builder.GetComponentInChildren<GridSystem>();
+                gs.selectBuild(p);
+            }
         }
-        else
-        {
-            builder.SetActive(false);
-            controls.controls.Player.LeftFlipper.Enable();
-            controls.controls.Player.RightFlipper.Enable();
-            controls.controls.Player.BoomStick.Enable();
+            else
+            {
+                builder.SetActive(false);
+                controls.controls.Player.LeftFlipper.Enable();
+                controls.controls.Player.RightFlipper.Enable();
+                controls.controls.Player.BoomStick.Enable();
 
-            controls.controls.Player.BuildLClick.Disable();
-            controls.controls.Player.BuildRClick.Disable();
-        }
+                controls.controls.Player.BuildLClick.Disable();
+                controls.controls.Player.BuildRClick.Disable();
+            }
     }
     
     private void OnSwapPerformed(UnityEngine.InputSystem.InputAction.CallbackContext ctx)

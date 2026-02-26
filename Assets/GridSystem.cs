@@ -14,6 +14,7 @@ public class GridSystem : MonoBehaviour
     private GameObject selectedTile;
 
     public GameObject selectedBuild;
+    public Collider2D selectedBuildCollider;
     public GameObject selectedRemove;
     public GameObject selectedObj;
     private Vector3 mousePos;
@@ -45,13 +46,25 @@ public class GridSystem : MonoBehaviour
             if (selectedTile != null)
                 selectedTile.GetComponent<SpriteRenderer>().color = Color.clear;
             selectedTile = tempSelect;
+            if (selectedBuild != null)
+            {
+                selectedBuild.transform.position = selectedTile.transform.position - new Vector3(selectedBuildCollider.bounds.max.x, selectedBuildCollider.bounds.max.y, 0);
+                
+            }
             selectedTile.GetComponent<SpriteRenderer>().color = Color.blue;
         }
 
     }
+    //Selecting active obj on grid
     public void selectBuild(GameObject g)
     {
 
+    }
+    //Instantiating new obejct on cursor
+    public void selectBuild(Pin p)
+    {
+        selectedBuild = Instantiate(p.gameObject);
+        selectedBuildCollider = selectedBuild.GetComponent<Pin>().myCollider;
     }
     private GameObject worldToTile(Vector3 pos)
     {
