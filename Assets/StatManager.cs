@@ -45,6 +45,18 @@ public class StatManager : MonoBehaviour
             displayPins();
         }
     }
+    public void removeItem(DynamicObject d)
+    {
+        if (d is Ball ball)
+        {
+            balls.Remove(ball);
+        }
+        else if (d is Pin pin)
+        {
+            pins.Remove(pin);
+            displayPins();
+        }
+    }
     private void displayPins()
     {
         foreach (Transform child in pinsDisplay.transform)
@@ -53,6 +65,7 @@ public class StatManager : MonoBehaviour
         }
         foreach (Pin p in pins)
         {
+            Pin capturedPin = p;
             GameObject temp = Instantiate(pinBox, pinsDisplay.transform);
             temp.GetComponent<Image>().sprite = p.gameObject.GetComponent<SpriteRenderer>().sprite;
             temp.GetComponent<Button>().onClick.AddListener(() =>

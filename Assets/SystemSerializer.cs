@@ -87,8 +87,9 @@ public class SystemSerializer : MonoBehaviour
             ALLBALLS[i] = new List<DynamicObject>();
             for (int j = 0; j < balls.Length; ++j)
             {
-                DynamicObject item = balls[j].GetComponent<DynamicObject>();
+                Ball item = balls[j].GetComponent<Ball>();
                 item.Init();
+                item.OBJID = ((RarityLevel)i).ToString() + "_Ball_" + j;
                 ALLBALLS[i].Add(item);
             }
         }
@@ -105,8 +106,9 @@ public class SystemSerializer : MonoBehaviour
             ALLPINS[i] = new List<DynamicObject>();
             for (int j = 0; j < pins.Length; ++j)
             {
-                DynamicObject item = pins[j].GetComponent<DynamicObject>();
+                Pin item = pins[j].GetComponent<Pin>();
                 item.Init();
+                item.OBJID = ((RarityLevel)i).ToString() + "_Pin_" + j;
                 ALLPINS[i].Add(item);
             }
         }
@@ -123,5 +125,15 @@ public class SystemSerializer : MonoBehaviour
             ALLBOARDS[types[i]] = new List<GameObject>(boards);
         }
         ALLBOARDS["Start"] = new List<GameObject>(Resources.LoadAll<GameObject>("Baords/Start"));
+    }
+    public DynamicObject findObj(DynamicObject obj)
+    {
+        List<DynamicObject> dl = obj is Pin ? ALLPINS[(int)obj.rarity] : ALLBALLS[(int)obj.rarity];
+        foreach (DynamicObject d in dl)
+        {
+            if (d.OBJID == obj.OBJID)
+                return d;
+        }
+        return null;
     }
 }

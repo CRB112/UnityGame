@@ -126,7 +126,7 @@ public class ShopMan : MonoBehaviour
             {
                 int rarity = i + 1; // convert 0–4 → 1–5
 
-                // Luck bonus roll
+                // Luck box`nus roll
                 int rand = Random.Range(1, 101);
                 if (rand <= luck * 0.3f)
                     rarity = Mathf.Min(rarity + 1, weights.Length);
@@ -140,10 +140,19 @@ public class ShopMan : MonoBehaviour
     {
         for (int i = 0; i < itemCount; ++i)
         {
+            DynamicObject item = null;
             int rarity = rollRarity(statMan.luck);
-            DynamicObject item = Random.Range(0, 2) == 1 ?
-                ss.ALLBALLS[rarity][Random.Range(0, ss.ALLBALLS[rarity].Count - 1)] :
-                ss.ALLPINS[rarity][Random.Range(0, ss.ALLPINS[rarity].Count - 1)];
+            do
+            {
+                Dictionary<int, List<DynamicObject>> ls = Random.Range(0, 2) == 1 ?
+                    ss.ALLBALLS :
+                    ss.ALLPINS;
+                if (ls.ContainsKey(rarity))
+                {
+                    item = ls[rarity][Random.Range(0, ls[rarity].Count - 1)];
+                }
+            }
+            while (item == null);
             items.Add(item);
         }
     }

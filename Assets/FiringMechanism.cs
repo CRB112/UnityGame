@@ -45,7 +45,6 @@ public class FiringMechanism : MonoBehaviour
     }
     public void loadSingleBall()
     {
-        Debug.Log("Loaded Ball");
         if (balls.Count > 0)
         {
             GameObject newBallObj = balls[balls.Count - 1].gameObject;

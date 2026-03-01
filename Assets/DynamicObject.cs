@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class DynamicObject : MonoBehaviour
 {
+    public string OBJID;
+    public GameObject prefab;
     public RarityLevel rarity;
     private int Cost;
     private Color color;
@@ -9,6 +11,7 @@ public class DynamicObject : MonoBehaviour
     {
         color = Rarity.GetColor(rarity);
         Cost = Rarity.GetCost(rarity);
+        prefab = gameObject;
     }
 
 

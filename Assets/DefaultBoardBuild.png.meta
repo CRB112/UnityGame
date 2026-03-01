@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -219,24 +219,24 @@ TextureImporter:
         - {x: 769, y: 656}
         - {x: 768, y: 657}
         - {x: 768, y: 688}
-        - {x: 208, y: 688}
-        - {x: 208, y: 657}
-        - {x: 207, y: 656}
-        - {x: 176, y: 656}
-        - {x: 176, y: 625}
-        - {x: 175, y: 624}
-        - {x: 144, y: 624}
-        - {x: 144, y: 593}
-        - {x: 143, y: 592}
-        - {x: -143, y: 592}
-        - {x: -144, y: 593}
-        - {x: -144, y: 624}
-        - {x: -175, y: 624}
-        - {x: -176, y: 625}
-        - {x: -176, y: 656}
-        - {x: -207, y: 656}
-        - {x: -208, y: 657}
-        - {x: -208, y: 688}
+        - {x: 224, y: 688}
+        - {x: 224, y: 657}
+        - {x: 223, y: 656}
+        - {x: 192, y: 656}
+        - {x: 192, y: 625}
+        - {x: 191, y: 624}
+        - {x: 160, y: 624}
+        - {x: 160, y: 593}
+        - {x: 159, y: 592}
+        - {x: -159, y: 592}
+        - {x: -160, y: 593}
+        - {x: -160, y: 624}
+        - {x: -191, y: 624}
+        - {x: -192, y: 625}
+        - {x: -192, y: 656}
+        - {x: -223, y: 656}
+        - {x: -224, y: 657}
+        - {x: -224, y: 688}
         - {x: -768, y: 688}
         - {x: -768, y: 657}
         - {x: -769, y: 656}
@@ -333,7 +333,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 755d75433ca914145bb1cf9da17523f0
+    spriteID: 036d388e1e0483541a9c677de89de156
     internalID: 0
     vertices: []
     indices: 
