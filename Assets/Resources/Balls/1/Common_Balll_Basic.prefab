@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2016718209487772666}
   - component: {fileID: 6177679078745306900}
   - component: {fileID: 5614998552662733411}
-  - component: {fileID: 2903230323275090898}
+  - component: {fileID: -8918194369959194488}
   m_Layer: 6
-  m_Name: Ball
+  m_Name: Common_Balll_Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &2903230323275090898
+--- !u!114 &-8918194369959194488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,6 +168,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b03db9bddab5944e85bb3e6f8214aae, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  rarity: 4
+  m_EditorClassIdentifier: Assembly-CSharp::Ball
+  OBJID: 
+  prefab: {fileID: 0}
+  rarity: 1
   scoreMulti: 1

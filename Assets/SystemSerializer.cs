@@ -89,7 +89,6 @@ public class SystemSerializer : MonoBehaviour
             {
                 Ball item = balls[j].GetComponent<Ball>();
                 item.Init();
-                item.OBJID = ((RarityLevel)i).ToString() + "_Ball_" + j;
                 ALLBALLS[i].Add(item);
             }
         }
@@ -108,7 +107,6 @@ public class SystemSerializer : MonoBehaviour
             {
                 Pin item = pins[j].GetComponent<Pin>();
                 item.Init();
-                item.OBJID = ((RarityLevel)i).ToString() + "_Pin_" + j;
                 ALLPINS[i].Add(item);
             }
         }

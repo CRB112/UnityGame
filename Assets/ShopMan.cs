@@ -31,7 +31,7 @@ public class itemSlot : MonoBehaviour
         StatManager statMan = GameObject.FindAnyObjectByType<StatManager>();
         if (statMan.cash >= obj.getCost())
         {
-            statMan.cash -= obj.getCost();
+            statMan.addCash(-obj.getCost());
             statMan.addItem(obj);
             return true;
         }

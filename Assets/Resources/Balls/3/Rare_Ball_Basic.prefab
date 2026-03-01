@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5614998552662733411}
   - component: {fileID: 2903230323275090898}
   m_Layer: 6
-  m_Name: Ball
+  m_Name: Rare_Ball_Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,5 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b03db9bddab5944e85bb3e6f8214aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  rarity: 5
-  scoreMulti: 1
+  OBJID: 
+  prefab: {fileID: 0}
+  rarity: 3
+  scoreMulti: 2.5

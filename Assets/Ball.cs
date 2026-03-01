@@ -3,7 +3,7 @@ using UnityEngine;
 public class Ball : DynamicObject
 {
     private StatManager statManager;
-    public int scoreMulti;
+    public float scoreMulti;
 
     private float maxSpeed = 22f;
     private Rigidbody2D rb;
@@ -26,7 +26,7 @@ public class Ball : DynamicObject
         Scoreable scoreableObj = collision.gameObject.GetComponent<Scoreable>();
         if (scoreableObj != null)
         {
-            statManager.addScore(scoreableObj.getScore() * scoreMulti);
+            scoreableObj.activateObj(this);
         }
     }
 }

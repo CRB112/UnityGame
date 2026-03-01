@@ -19,8 +19,12 @@ public class StatManager : MonoBehaviour
     public GameObject pinsDisplay;
     public GameObject pinBox;
 
+    public GameObject buildBTN;
+
     void Start()
     {
+        addScore(0);
+        addCash(0);
     }
 
     void Update()
@@ -31,6 +35,11 @@ public class StatManager : MonoBehaviour
     {
         score += val;
         scoreText.text = score.ToString();
+    }
+    public void addCash(int val)
+    {
+        cash += val;
+        cashText.text = cash.ToString();
     }
 
     public void addItem(DynamicObject d)

@@ -26,7 +26,7 @@ public class startMenu : MonoBehaviour
             {
                 b.onClick.AddListener(() =>
                 {
-                    gameStateMan.swapState("Board", "MainGame");
+                    gameStateMan.swapState("Shop", "MainGame");
                 });
             }
         }

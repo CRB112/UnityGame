@@ -87,10 +87,15 @@ public class GameStateMan : MonoBehaviour
             currentInstance = Instantiate(currentOpen);
 
             boardMan = currentInstance.GetComponentInChildren<BoardMan>();
+            FindAnyObjectByType<StatManager>().buildBTN.SetActive(true);
             boardMan.startRound();
         }
         else
         {
+            if (SceneManager.GetActiveScene().name == "MainGame")
+            {
+                FindAnyObjectByType<StatManager>().buildBTN.SetActive(false);
+            }
             List<GameObject> w = getWindow(state).windows;
             currentOpen = w[Random.Range(0, w.Count)];
             currentInstance = Instantiate(currentOpen);

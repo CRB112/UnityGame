@@ -12,6 +12,7 @@ public class DynamicObject : MonoBehaviour
         color = Rarity.GetColor(rarity);
         Cost = Rarity.GetCost(rarity);
         prefab = gameObject;
+        OBJID = gameObject.name;
     }
 
 
