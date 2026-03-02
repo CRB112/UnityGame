@@ -41,7 +41,7 @@ public class GridSystem : MonoBehaviour
             }
             else if (selectedBuild == null)
             {
-                Scoreable obj = checkForObj(mousePos);
+                Buildable obj = checkForObj(mousePos);
                 if (obj != null)
                 {
                     move = true;
@@ -61,7 +61,7 @@ public class GridSystem : MonoBehaviour
             }
             else
             {
-                Scoreable obj = checkForObj(mousePos);
+                Buildable obj = checkForObj(mousePos);
                 if (obj != null)
                 {
                     removeObject(obj);
@@ -124,7 +124,7 @@ public class GridSystem : MonoBehaviour
         }
     }
     //Instantiating new obejct on cursor
-    public void selectBuild(Scoreable p)
+    public void selectBuild(Buildable p)
     {
         selectedBuildPrefab = ss.findObj(p).prefab;
         //Selecting existing obejct
@@ -134,7 +134,7 @@ public class GridSystem : MonoBehaviour
         }
 
         selectedBuild = Instantiate(selectedBuildPrefab, FindAnyObjectByType<BoardMan>().boardObjects.transform);
-        selectedBuildCollider = selectedBuild.GetComponent<Scoreable>().myCollider;
+        selectedBuildCollider = selectedBuild.GetComponent<Buildable>().myCollider;
 
         if (move)
         {
@@ -155,17 +155,17 @@ public class GridSystem : MonoBehaviour
         Destroy(selectedBuild);
         move = false;
     }
-    private void removeObject(Scoreable p)
+    private void removeObject(Buildable p)
     {
         foreach (Tile t in p.myTiles)
             t.setTaken(false);
         statMan.addItem(ss.findObj(p));
         Destroy(p.gameObject);
     }
-    private Scoreable checkForObj(Vector3 pos)
+    private Buildable checkForObj(Vector3 pos)
     {
         Collider2D hit = Physics2D.OverlapPoint(pos, LayerMask.GetMask("Pin"));
-        return hit == null ? null : hit.GetComponent<Scoreable>();
+        return hit == null ? null : hit.GetComponent<Buildable>();
     }
     private GameObject worldToTile(Vector3 pos)
     {
@@ -184,7 +184,7 @@ public class GridSystem : MonoBehaviour
     }
     public Vector3 objectPos(GameObject tile, GameObject obj)
     {
-        BoxCollider2D col = obj.GetComponent<Scoreable>().myCollider;
+        BoxCollider2D col = obj.GetComponent<Buildable>().myCollider;
 
         Vector2 tileSize = tile.GetComponent<SpriteRenderer>().bounds.size;
         Vector2 scaledSize = col.bounds.size;
@@ -210,7 +210,7 @@ public class GridSystem : MonoBehaviour
         }
         selectedTiles.Clear();
         bool valid = true;
-        BoxCollider2D col = selectedBuild.GetComponent<Scoreable>().myCollider;
+        BoxCollider2D col = selectedBuild.GetComponent<Buildable>().myCollider;
         Vector2 tileSize = tile.GetComponent<SpriteRenderer>().bounds.size;
         Vector2 scaledSize = Vector2.Scale(col.size, selectedBuild.transform.lossyScale);
 
@@ -253,7 +253,7 @@ public class GridSystem : MonoBehaviour
         {
             tile.GetComponent<Tile>().setTaken(true);
             tile.GetComponent<SpriteRenderer>().color = Color.clear;
-            selectedBuild.GetComponent<Scoreable>().myTiles.Add(tile.GetComponent<Tile>());
+            selectedBuild.GetComponent<Buildable>().myTiles.Add(tile.GetComponent<Tile>());
         }
         if (!move)
             statMan.removeItem(selectedBuildPrefab.GetComponent<DynamicObject>());

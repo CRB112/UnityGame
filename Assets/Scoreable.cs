@@ -1,18 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scoreable : DynamicObject
+public class Scoreable : Buildable
 {
     public StatManager statMan;
 
-    public BoxCollider2D myCollider;
-    public List<Tile> myTiles = new List<Tile>();
 
     public float score;
 
     protected virtual void Start()
     {
-        Debug.Log("STARTED");
         statMan = FindAnyObjectByType<StatManager>();
     }
 
@@ -23,7 +20,7 @@ public class Scoreable : DynamicObject
     }
     public float getScore() { return score; }
 
-    public void activateObj(Ball b = null)
+    public override void activateObj(Ball b = null)
     {
         if (b != null)
         {

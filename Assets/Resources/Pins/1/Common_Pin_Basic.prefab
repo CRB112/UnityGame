@@ -109,11 +109,11 @@ MonoBehaviour:
   OBJID: Common_Pin_0
   prefab: {fileID: 8097661402090385807}
   rarity: 1
-  statMan: {fileID: 0}
+  description: A normal ass Pin.. Nothing Special
   myCollider: {fileID: 6007225258027800577}
   myTiles: []
+  statMan: {fileID: 0}
   score: 10
-  pinValue: 0
 --- !u!58 &-867044177537013518
 CircleCollider2D:
   m_ObjectHideFlags: 0

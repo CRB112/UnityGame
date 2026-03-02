@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 4963925306574239435}
   - component: {fileID: 623330280315832643}
   - component: {fileID: 7879593584018463141}
+  - component: {fileID: -468661729017960582}
   m_Layer: 5
   m_Name: ItemBox
   m_TagString: Untagged
@@ -346,3 +347,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-468661729017960582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947222135610887134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed22132428e651b4e802f9167ed39d7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemUI

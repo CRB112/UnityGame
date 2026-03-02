@@ -76,6 +76,7 @@ public class StatManager : MonoBehaviour
         {
             Pin capturedPin = p;
             GameObject temp = Instantiate(pinBox, pinsDisplay.transform);
+            temp.GetComponent<ItemUI>().dO = p;
             temp.GetComponent<Image>().sprite = p.gameObject.GetComponent<SpriteRenderer>().sprite;
             temp.GetComponent<Button>().onClick.AddListener(() =>
             {

@@ -7,6 +7,11 @@ public class DynamicObject : MonoBehaviour
     public RarityLevel rarity;
     private int Cost;
     private Color color;
+
+    [SerializeField, TextArea(3, 6)]
+    private string description;
+    public string Description => description;
+    
     public void Init()
     {
         color = Rarity.GetColor(rarity);

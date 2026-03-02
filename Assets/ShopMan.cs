@@ -102,6 +102,7 @@ public class ShopMan : MonoBehaviour
             temp.AddComponent<itemSlot>();
             itemSlot islot = temp.GetComponent<itemSlot>();
             DynamicObject o = items[i];
+            temp.GetComponent<ItemUI>().dO = o;
             islot.Init(o);
             temp.GetComponent<Button>().onClick.AddListener(() =>
             {
