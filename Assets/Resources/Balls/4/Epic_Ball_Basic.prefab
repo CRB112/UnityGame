@@ -172,4 +172,5 @@ MonoBehaviour:
   OBJID: 
   prefab: {fileID: 0}
   rarity: 4
+  description: I <3 Purple
   scoreMulti: 5

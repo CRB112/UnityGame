@@ -158,8 +158,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2785f51a0a6147a43bc5ca6e10ccc987, type: 2}
+  m_sharedMaterial: {fileID: 8612826172759584499, guid: 2785f51a0a6147a43bc5ca6e10ccc987, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -487,8 +487,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -200}
-  m_SizeDelta: {x: -700, y: -600}
+  m_AnchoredPosition: {x: 0, y: -250}
+  m_SizeDelta: {x: -1200, y: -700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1835464017963763042
 CanvasRenderer:
@@ -548,7 +548,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 200, y: 200}
+  m_CellSize: {x: 150, y: 150}
   m_Spacing: {x: 75, y: 25}
   m_Constraint: 1
   m_ConstraintCount: 3

@@ -15,17 +15,17 @@ public static class Rarity
 {
     private static int baseCost = 50;
 
-    private static Color[] colors = {
-        new Color(256, 256, 256, .5f),
-        new Color(0, 230, 2, .5f),
-        new Color(0, 87, 255, .5f),
-        new Color(97, 0, 173, .5f),
-        new Color(255, 172, 0, .5f),
+    private static Color32[] rarityColors = {
+    new Color32(190, 190, 190, 255), // Common (clean silver-gray)
+    new Color32(120, 220, 140, 255), // Uncommon (fresh green)
+    new Color32(110, 170, 255, 255), // Rare (bright soft blue)
+    new Color32(190, 140, 255, 255), // Epic (vivid soft purple)
+    new Color32(255, 190, 110, 255), // Legendary (bright warm gold)
     };
 
     public static Color GetColor(RarityLevel rarity)
     {
-        return colors[(int)rarity - 1];
+        return rarityColors[(int)rarity - 1];
     }
 
     public static int GetCost(RarityLevel rarity)
@@ -89,6 +89,7 @@ public class SystemSerializer : MonoBehaviour
             {
                 Ball item = balls[j].GetComponent<Ball>();
                 item.Init();
+                Debug.Log(item);
                 ALLBALLS[i].Add(item);
             }
         }

@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ToolTipManager : MonoBehaviour
 {
@@ -18,11 +19,12 @@ public class ToolTipManager : MonoBehaviour
 
     }
 
-    public void show(Transform t, string desc)
+    public void show(DynamicObject dO, Transform t, string desc)
     {
         if (openTT != null)
             Destroy(openTT);
-        openTT = Instantiate(box, t.transform.position, quaternion.identity, t);
+        openTT = Instantiate(box, t.transform.position  + new Vector3(0, 100, 0), quaternion.identity, t);
+        openTT.GetComponent<Image>().color = dO.getColor();
         openTT.GetComponentInChildren<TextMeshProUGUI>().text = desc;
     }
     public void hide()

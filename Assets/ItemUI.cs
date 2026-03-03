@@ -13,7 +13,7 @@ public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        ttm.show(gameObject.transform, dO.Description);
+        ttm.show(dO, gameObject.transform, dO.Description);
     }
 
     public void OnPointerExit(PointerEventData eventData)

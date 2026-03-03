@@ -127,11 +127,11 @@ public class ShopMan : MonoBehaviour
             {
                 int rarity = i + 1; // convert 0–4 → 1–5
 
-                // Luck box`nus roll
+                // Luck bonus roll
                 int rand = Random.Range(1, 101);
                 if (rand <= luck * 0.3f)
                     rarity = Mathf.Min(rarity + 1, weights.Length);
-
+                Debug.Log(rarity);
                 return rarity;
             }
         }
