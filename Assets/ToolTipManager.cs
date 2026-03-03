@@ -23,7 +23,7 @@ public class ToolTipManager : MonoBehaviour
     {
         if (openTT != null)
             Destroy(openTT);
-        openTT = Instantiate(box, t.transform.position  + new Vector3(0, 100, 0), quaternion.identity, t);
+        openTT = Instantiate(box, t.transform.position  + new Vector3(0, 100, 0), quaternion.identity, t.transform.parent?.GetComponentInParent<Canvas>().transform);
         openTT.GetComponent<Image>().color = dO.getColor();
         openTT.GetComponentInChildren<TextMeshProUGUI>().text = desc;
     }
