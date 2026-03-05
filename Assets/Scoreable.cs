@@ -6,7 +6,8 @@ public class Scoreable : Buildable
     public StatManager statMan;
 
 
-    public float score;
+    public float scoreBase;
+    public float scoreModified;
 
     protected virtual void Start()
     {
@@ -18,17 +19,17 @@ public class Scoreable : Buildable
     {
 
     }
-    public float getScore() { return score; }
+    public float getScore() { return scoreModified; }
 
     public override void activateObj(Ball b = null)
     {
         if (b != null)
         {
-            statMan.addScore((int)(score * b.scoreMulti));
+            statMan.addScore((int)(scoreModified * b.scoreMultiModified));
         }
         else
         {
-            statMan.addScore((int)score);
+            statMan.addScore((int)scoreModified);
         }
     }
     public void colorMyTiles(Color c)
@@ -44,6 +45,14 @@ public class Scoreable : Buildable
         {
             t.taken = false;
             t.setColor(Color.clear);
+        }
+    }
+    public override void recalculateMulti()
+    {
+        foreach (Effect e in GetComponents<Effect>())
+        {
+            scoreModified = scoreBase;
+            scoreModified = e.getBallModifier(scoreModified);
         }
     }
 }
