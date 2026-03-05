@@ -59,7 +59,8 @@ public class DynamicObject : MonoBehaviour
         {
             foreach (Effect e in GetComponents<Effect>())
             {
-                target.ApplyEffect(e);
+                if (e.spreadEffect())
+                    target.ApplyEffect(e);
             }
             target.recalculateMulti();
         }

@@ -14,6 +14,7 @@ public class Effect : MonoBehaviour
 {
     public float duration = 5;
     public float tick = .5f;
+    public float spreadChance;
     public DynamicObject d;
 
     public float ballModifier;
@@ -68,7 +69,9 @@ public class Effect : MonoBehaviour
         if (effectRoutine != null) StopCoroutine(effectRoutine);
         effectRoutine = StartCoroutine(effectStartEnum(duration));
     }
-
+    public bool spreadEffect() {
+        return UnityEngine.Random.Range(0, 101) <= spreadChance;
+    }
     public virtual float getBallModifier(float baseVal)
     {
         return ApplyOperation(baseVal, ballModifier, op);
