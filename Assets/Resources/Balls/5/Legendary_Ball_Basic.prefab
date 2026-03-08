@@ -173,4 +173,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   rarity: 5
   description: ts orange
-  scoreMulti: 10
+  scoreMultiBase: 10
+  scoreMultiModified: 0

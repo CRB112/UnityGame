@@ -173,4 +173,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   rarity: 2
   description: Uncommon... HMMM
-  scoreMulti: 1.5
+  scoreMultiBase: 1.5
+  scoreMultiModified: 0

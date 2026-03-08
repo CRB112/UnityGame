@@ -8,6 +8,8 @@ public class StatManager : MonoBehaviour
 {
     public int score;
     public int cash = 100;
+    public int maxBalls = 5;
+    public int maxPins;
     public float luck = 0;
     public List<Ball> balls;
     public List<Pin> pins;
@@ -42,7 +44,7 @@ public class StatManager : MonoBehaviour
         cashText.text = cash.ToString();
     }
 
-    public void addItem(DynamicObject d)
+    public bool addItem(DynamicObject d)
     {
         if (d is Ball ball)
         {
@@ -53,6 +55,7 @@ public class StatManager : MonoBehaviour
             pins.Add(pin);
             displayPins();
         }
+        return true;
     }
     public void removeItem(DynamicObject d)
     {

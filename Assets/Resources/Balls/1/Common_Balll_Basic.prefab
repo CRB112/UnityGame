@@ -172,5 +172,6 @@ MonoBehaviour:
   OBJID: Common_Balll_Basic
   prefab: {fileID: 2295617868109214050}
   rarity: 1
-  description: 
-  scoreMulti: 1
+  description: RAHHHHHH BALLLRAHJ
+  scoreMultiBase: 1
+  scoreMultiModified: 0

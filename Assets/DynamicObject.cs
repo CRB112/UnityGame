@@ -6,7 +6,7 @@ public class DynamicObject : MonoBehaviour
     public string OBJID;
     public GameObject prefab;
     public RarityLevel rarity;
-    private int Cost;
+    public int Cost;
     private Color color;
 
     [SerializeField, TextArea(3, 6)]
@@ -17,6 +17,7 @@ public class DynamicObject : MonoBehaviour
     {
         color = Rarity.GetColor(rarity);
         Cost = Rarity.GetCost(rarity);
+        Debug.Log(Cost);
         prefab = gameObject;
         OBJID = gameObject.name;
     }

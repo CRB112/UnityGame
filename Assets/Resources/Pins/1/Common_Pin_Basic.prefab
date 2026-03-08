@@ -113,7 +113,8 @@ MonoBehaviour:
   myCollider: {fileID: 6007225258027800577}
   myTiles: []
   statMan: {fileID: 0}
-  score: 10
+  scoreBase: 10
+  scoreModified: 0
 --- !u!58 &-867044177537013518
 CircleCollider2D:
   m_ObjectHideFlags: 0

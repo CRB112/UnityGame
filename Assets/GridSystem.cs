@@ -64,6 +64,8 @@ public class GridSystem : MonoBehaviour
                 Buildable obj = checkForObj(mousePos);
                 if (obj != null)
                 {
+                    Debug.Log(obj.getCost() / 2);
+                    statMan.addCash(obj.getCost() / 2);
                     removeObject(obj);
                 }
             }
@@ -159,7 +161,6 @@ public class GridSystem : MonoBehaviour
     {
         foreach (Tile t in p.myTiles)
             t.setTaken(false);
-        statMan.addItem(ss.findObj(p));
         Destroy(p.gameObject);
     }
     private Buildable checkForObj(Vector3 pos)

@@ -17,6 +17,7 @@ public class Ball : DynamicObject
         rarity = RarityLevel.Common;
         statManager = FindFirstObjectByType<StatManager>();
         rb = GetComponent<Rigidbody2D>();
+        scoreMultiModified = scoreMultiBase;
     }
 
 
@@ -45,9 +46,9 @@ public class Ball : DynamicObject
     }
     public override void recalculateMulti()
     {
+        scoreMultiModified = scoreMultiBase;
         foreach (Effect e in GetComponents<Effect>())
         {
-            scoreMultiModified = scoreMultiBase;
             scoreMultiModified = e.getBallModifier(scoreMultiModified);
         }
     }

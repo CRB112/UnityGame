@@ -173,4 +173,5 @@ MonoBehaviour:
   prefab: {fileID: 0}
   rarity: 3
   description: RARE!?!?!? WHATS NEXT LEGENDARY??
-  scoreMulti: 2.5
+  scoreMultiBase: 2.5
+  scoreMultiModified: 0

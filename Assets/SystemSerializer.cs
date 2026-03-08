@@ -89,7 +89,6 @@ public class SystemSerializer : MonoBehaviour
             {
                 Ball item = balls[j].GetComponent<Ball>();
                 item.Init();
-                Debug.Log(item);
                 ALLBALLS[i].Add(item);
             }
         }
