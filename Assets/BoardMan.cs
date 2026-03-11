@@ -9,7 +9,6 @@ public class BoardMan : MonoBehaviour
     private List<GameObject> activeBalls;
     public StatManager statMan;
     private GameStateMan gameStateMan;
-    public GameObject buildBTN;
 
     public GameObject boardObjects;
     private bool building = false;
@@ -33,7 +32,7 @@ public class BoardMan : MonoBehaviour
     }
     void Start()
     {
-        findBuildButton();
+        findButtons();
     }
     void Update()
     {
@@ -107,16 +106,23 @@ public class BoardMan : MonoBehaviour
         if (activeBalls.Count == 0)
             swapMode();
     }
-    private void findBuildButton()
+    private void findButtons()
     {
         Button[] btns = FindObjectsByType<Button>(FindObjectsSortMode.None);
-        foreach(Button b in btns) {
+        foreach (Button b in btns)
+        {
             if (b.gameObject.name == "BuildBTN")
             {
-                buildBTN = b.gameObject;
                 b.onClick.AddListener(() =>
                 {
                     swapMode();
+                });
+            }
+            else if (b.gameObject.name == "SellBTN")
+            {
+                b.onClick.AddListener(() =>
+                {
+                    FindAnyObjectByType<UIManager>().open("SellUI");
                 });
             }
         }

@@ -64,8 +64,6 @@ public class GridSystem : MonoBehaviour
                 Buildable obj = checkForObj(mousePos);
                 if (obj != null)
                 {
-                    Debug.Log(obj.getCost() / 2);
-                    statMan.addCash(obj.getCost() / 2);
                     removeObject(obj);
                 }
             }

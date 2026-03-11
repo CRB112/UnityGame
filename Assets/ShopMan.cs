@@ -2,16 +2,20 @@ using System.Collections.Generic;
 using System.Dynamic;
 using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class itemSlot : MonoBehaviour
 {
+    public GameObject emptySlot;
     public DynamicObject obj;
-    public void Init(DynamicObject ob)
+    //Bool is purchase or sell - true for purchase, false for sell
+    public void Init(DynamicObject ob, bool pos)
     {
+        emptySlot = FindAnyObjectByType<SystemSerializer>().findPrefab("ItemBox_Purchased");
+        Debug.Log(emptySlot);
         obj = ob;
-        GetComponentInChildren<TextMeshProUGUI>().text = Rarity.GetCost(obj.rarity).ToString();
         UnityEngine.UI.Image[] imgs = GetComponentsInChildren<UnityEngine.UI.Image>();
         foreach (UnityEngine.UI.Image i in imgs)
         {
@@ -19,11 +23,12 @@ public class itemSlot : MonoBehaviour
             {
                 i.sprite = obj.gameObject.GetComponent<SpriteRenderer>().sprite;
             }
-            else
+            else if (pos)
             {
                 GetComponent<UnityEngine.UI.Image>().color = Rarity.GetColor(obj.rarity);
             }
         }
+        GetComponentInChildren<TextMeshProUGUI>().text = pos ? Rarity.GetCost(obj.rarity).ToString() : (Rarity.GetCost(obj.rarity) / 2).ToString();
     }
     //Returns bool for disableBox() semantics
     public bool purchase()
@@ -40,6 +45,13 @@ public class itemSlot : MonoBehaviour
             return false;
             //Animation
         }
+    }
+    public void disableBox()
+    {
+        int index = gameObject.transform.GetSiblingIndex();
+        GameObject temp = Instantiate(emptySlot, transform.parent.transform);
+        temp.transform.SetSiblingIndex(index);
+        Destroy(gameObject);
     }
 }
 public class ShopMan : MonoBehaviour
@@ -103,13 +115,13 @@ public class ShopMan : MonoBehaviour
             itemSlot islot = temp.GetComponent<itemSlot>();
             DynamicObject o = items[i];
             temp.GetComponent<ItemUI>().dO = o;
-            islot.Init(o);
+            islot.Init(o, true);
             temp.GetComponent<Button>().onClick.AddListener(() =>
             {
                 bool b = islot.purchase();
                 if (b)
                 {
-                    disableBox(temp);
+                    islot.disableBox();
                 }
             });
         }
@@ -156,13 +168,5 @@ public class ShopMan : MonoBehaviour
             while (item == null);
             items.Add(item);
         }
-    }
-    private void disableBox(GameObject g)
-    {
-        int index = g.transform.GetSiblingIndex();
-        Destroy(g);
-
-        GameObject temp = Instantiate(emptySlot, fillSpace.transform);
-        temp.transform.SetSiblingIndex(index);
     }
 }

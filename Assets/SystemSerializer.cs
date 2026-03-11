@@ -59,6 +59,7 @@ public class SystemSerializer : MonoBehaviour
     public Dictionary<int, List<DynamicObject>> ALLBALLS = new Dictionary<int, List<DynamicObject>>();
     public Dictionary<int, List<DynamicObject>> ALLPINS = new Dictionary<int, List<DynamicObject>>();
     public Dictionary<string, List<GameObject>> ALLBOARDS = new Dictionary<string, List<GameObject>>();
+    public List<GameObject> PREFABS = new List<GameObject>();
     void Start()
     {
         LoadAll();
@@ -74,6 +75,7 @@ public class SystemSerializer : MonoBehaviour
         loadAllBalls();
         loadAllPins();
         loadAllBoards();
+        loadAllPrefabs();
     }
     private void loadAllBalls()
     {
@@ -124,6 +126,12 @@ public class SystemSerializer : MonoBehaviour
         }
         ALLBOARDS["Start"] = new List<GameObject>(Resources.LoadAll<GameObject>("Baords/Start"));
     }
+    private void loadAllPrefabs()
+    {
+        GameObject[] prefabs = Resources.LoadAll<GameObject>("Prefabs");
+        foreach (GameObject g in prefabs)
+            PREFABS.Add(g);
+    }
     public DynamicObject findObj(DynamicObject obj)
     {
         List<DynamicObject> dl = obj is Pin ? ALLPINS[(int)obj.rarity] : ALLBALLS[(int)obj.rarity];
@@ -131,6 +139,17 @@ public class SystemSerializer : MonoBehaviour
         {
             if (d.OBJID == obj.OBJID)
                 return d;
+        }
+        return null;
+    }
+    public GameObject findPrefab(string name)
+    {
+        foreach (GameObject g in PREFABS)
+        {
+            if (g.name == name)
+            {
+                return g;
+            }
         }
         return null;
     }

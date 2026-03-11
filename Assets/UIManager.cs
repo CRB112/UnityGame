@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
 {
     public List<UIElement> elementList = new List<UIElement>();
     public Dictionary<string, GameObject> elements = new Dictionary<string, GameObject>();
+    private GameObject active;
     void Start()
     {
         foreach (UIElement u in elementList) {
@@ -24,12 +25,17 @@ public class UIManager : MonoBehaviour
     {
         
     }
-    public void open(string name) {
+    public void open(string name)
+    {
+        if (active != null && name != active.name)
+            active.SetActive(false);
         if (elements.ContainsKey(name))
-            elements[name].SetActive(true);
+            {
+                elements[name].SetActive(true);
+                active = elements[name];
+            }
     }
     public void close(string screen) {
-        if (elements.ContainsKey(name))
-            elements[name].SetActive(false);
+        active.SetActive(false);
     }
 }
