@@ -9,13 +9,18 @@ public class BoardMan : MonoBehaviour
     private List<GameObject> activeBalls;
     public StatManager statMan;
     private GameStateMan gameStateMan;
+    private UIManager ui;
 
     public GameObject boardObjects;
     private bool building = false;
     public GameObject builder;
+
+    public Button buildBTN;
+    public Button sellBTN;
     void Awake()
     {
         Debug.Log("BoardMan instance: " + gameObject.name + " | ID: " + GetInstanceID());
+        ui = FindFirstObjectByType<UIManager>();
         gameStateMan = FindFirstObjectByType<GameStateMan>();
         statMan = FindFirstObjectByType<StatManager>();
         boomstick = FindFirstObjectByType<FiringMechanism>();
@@ -27,16 +32,16 @@ public class BoardMan : MonoBehaviour
         controls.controls.Player.SwapToBuild.Enable();
         activeBalls = new List<GameObject>();
 
-
         controls.controls.Player.SwapToBuild.performed += OnSwapPerformed;
     }
     void Start()
     {
-        findButtons();
+                findButtons();
     }
     void Update()
     {
-
+        sellBTN.interactable = activeBalls.Count == 0;
+        buildBTN.interactable = activeBalls.Count == 0;
     }
     void OnDestroy()
     {
@@ -113,6 +118,7 @@ public class BoardMan : MonoBehaviour
         {
             if (b.gameObject.name == "BuildBTN")
             {
+                buildBTN = b;
                 b.onClick.AddListener(() =>
                 {
                     swapMode();
@@ -120,6 +126,7 @@ public class BoardMan : MonoBehaviour
             }
             else if (b.gameObject.name == "SellBTN")
             {
+                sellBTN = b;
                 b.onClick.AddListener(() =>
                 {
                     FindAnyObjectByType<UIManager>().open("SellUI");

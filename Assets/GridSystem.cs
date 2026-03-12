@@ -57,6 +57,10 @@ public class GridSystem : MonoBehaviour
                 {
                     selectedBuild.transform.position = selectedBuildOldPos;
                 }
+                else
+                {
+                    statMan.addItem(ss.findObj(selectedBuild.GetComponent<DynamicObject>()));
+                }
                 deselectBuild();
             }
             else
@@ -157,6 +161,7 @@ public class GridSystem : MonoBehaviour
     }
     private void removeObject(Buildable p)
     {
+        statMan.addItem(ss.findObj(p));
         foreach (Tile t in p.myTiles)
             t.setTaken(false);
         Destroy(p.gameObject);

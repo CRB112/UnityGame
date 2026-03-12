@@ -9,6 +9,8 @@ public class ObjSeller : MonoBehaviour
     public GameObject ballParent;
     public GameObject pinParent;
     public GameObject itemBox;
+    private List<GameObject> boxes = new List<GameObject>();
+    public Button sellB;
 
     public StatManager statMan;
     void Start()
@@ -34,9 +36,11 @@ public class ObjSeller : MonoBehaviour
     }
     public void listItems()
     {
+        clearItems();
         foreach (DynamicObject d in statMan.balls.Cast<DynamicObject>().Concat(statMan.pins))
         {
             GameObject i = Instantiate(itemBox, ballParent.transform.position, Quaternion.identity, d is Ball ? ballParent.transform : pinParent.transform);
+            boxes.Add(i);
             i.AddComponent<itemSlot>();
             i.GetComponent<itemSlot>().Init(d, false);
             i.GetComponent<ItemUI>().dO = d;
@@ -46,5 +50,11 @@ public class ObjSeller : MonoBehaviour
                 Destroy(i);
             });
         }
+    }
+    public void clearItems()
+    {
+        foreach (GameObject g in boxes)
+            Destroy(g);
+        boxes.Clear();
     }
 }

@@ -48,7 +48,10 @@ public class StatManager : MonoBehaviour
     {
         if (d is Ball ball)
         {
-            balls.Add(ball);
+            if (balls.Count >= maxBalls)
+                Debug.Log("Too many Balls");
+            else
+                balls.Add(ball);
         }
         else if (d is Pin pin)
         {
@@ -88,6 +91,7 @@ public class StatManager : MonoBehaviour
                     b.swapMode(p);
                 else
                     FindAnyObjectByType<GridSystem>().selectBuild(p);
+                pins.Remove(p);
             });
         }
     }

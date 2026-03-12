@@ -163,6 +163,15 @@ public partial class @Pinball_Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MenuESC"",
+                    ""type"": ""Button"",
+                    ""id"": ""0e0756a3-f11a-4200-926f-bfd778524ec9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -251,6 +260,17 @@ public partial class @Pinball_Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwapToBuild"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c50e8281-6165-4103-a366-2766962f99ba"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuESC"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -846,6 +866,7 @@ public partial class @Pinball_Controls: IInputActionCollection2, IDisposable
         m_Player_ShopLClick = m_Player.FindAction("ShopLClick", throwIfNotFound: true);
         m_Player_ShopRClick = m_Player.FindAction("ShopRClick", throwIfNotFound: true);
         m_Player_SwapToBuild = m_Player.FindAction("SwapToBuild", throwIfNotFound: true);
+        m_Player_MenuESC = m_Player.FindAction("MenuESC", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -947,6 +968,7 @@ public partial class @Pinball_Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ShopLClick;
     private readonly InputAction m_Player_ShopRClick;
     private readonly InputAction m_Player_SwapToBuild;
+    private readonly InputAction m_Player_MenuESC;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -990,6 +1012,10 @@ public partial class @Pinball_Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/SwapToBuild".
         /// </summary>
         public InputAction @SwapToBuild => m_Wrapper.m_Player_SwapToBuild;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/MenuESC".
+        /// </summary>
+        public InputAction @MenuESC => m_Wrapper.m_Player_MenuESC;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1040,6 +1066,9 @@ public partial class @Pinball_Controls: IInputActionCollection2, IDisposable
             @SwapToBuild.started += instance.OnSwapToBuild;
             @SwapToBuild.performed += instance.OnSwapToBuild;
             @SwapToBuild.canceled += instance.OnSwapToBuild;
+            @MenuESC.started += instance.OnMenuESC;
+            @MenuESC.performed += instance.OnMenuESC;
+            @MenuESC.canceled += instance.OnMenuESC;
         }
 
         /// <summary>
@@ -1075,6 +1104,9 @@ public partial class @Pinball_Controls: IInputActionCollection2, IDisposable
             @SwapToBuild.started -= instance.OnSwapToBuild;
             @SwapToBuild.performed -= instance.OnSwapToBuild;
             @SwapToBuild.canceled -= instance.OnSwapToBuild;
+            @MenuESC.started -= instance.OnMenuESC;
+            @MenuESC.performed -= instance.OnMenuESC;
+            @MenuESC.canceled -= instance.OnMenuESC;
         }
 
         /// <summary>
@@ -1431,6 +1463,13 @@ public partial class @Pinball_Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSwapToBuild(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MenuESC" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMenuESC(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

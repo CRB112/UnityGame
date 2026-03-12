@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class UIElement {
@@ -14,11 +15,22 @@ public class UIManager : MonoBehaviour
     public List<UIElement> elementList = new List<UIElement>();
     public Dictionary<string, GameObject> elements = new Dictionary<string, GameObject>();
     private GameObject active;
+
+    private globalControls controls;
     void Start()
     {
-        foreach (UIElement u in elementList) {
+        controls = FindAnyObjectByType<globalControls>();
+        foreach (UIElement u in elementList)
+        {
             elements[u.name] = u.obj;
         }
+        controls.controls.Player.MenuESC.performed += ctx =>
+        {
+            if (active == null)
+                open("Start");
+            else
+                close();
+        };
     }
 
     void Update()
@@ -35,7 +47,7 @@ public class UIManager : MonoBehaviour
                 active = elements[name];
             }
     }
-    public void close(string screen) {
+    public void close() {
         active.SetActive(false);
     }
 }
